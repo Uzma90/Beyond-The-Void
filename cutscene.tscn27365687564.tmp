@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://chb00rsnlu7f3"]
+
+[ext_resource type="Script" uid="uid://dvslt888mkf2r" path="res://cutscene.gd" id="1_ye7fo"]
+[ext_resource type="FontFile" uid="uid://dmjcngoq2hi7k" path="res://font/yoster.ttf" id="2_ix241"]
+
+[node name="Cutscene" type="Node2D" unique_id=161374747]
+script = ExtResource("1_ye7fo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1774556540]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1463132811]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=719445362]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkipButton" type="Button" parent="CanvasLayer" unique_id=974091804]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_ix241")
+theme_override_font_sizes/font_size = 16
+text = "
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=241931043]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("2_ix241")
+theme_override_font_sizes/normal_font_size = 16
+
+[node name="TextFrame" type="TextureRect" parent="CanvasLayer" unique_id=1573121280]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=367229865]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="topbar" type="ColorRect" parent="CanvasLayer" unique_id=1974896050]
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -1092.0
+grow_horizontal = 2
+
+[node name="bottombar" type="ColorRect" parent="CanvasLayer" unique_id=461220830]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1092.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LetterText" type="Label" parent="CanvasLayer" unique_id=2043075258]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_ix241")
+theme_override_font_sizes/font_size = 16
+text = "**To the Witch Who Doesn't Remember Me,**
+
+You don't know who I am.
+
+But I know you.
+
+I know you've been waiting for something to break the endless repetition of your days.
+
+So let me give you something to chase.
+
+Deep in the forest, beyond the old ruins, there is a **silver key**.
+
+Find it.
+
+Bring it back to your home and place it beneath the candle on your table.
+
+When you do, you will understand why I came looking for you.
+
+And if you still want answers after that...
+
+I'll give you another letter.
+
+**—Someone you once knew**
+"
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1790446606]
+
+[node name="KnockPlayer" type="AudioStreamPlayer2D" parent="." unique_id=103719431]
+
+[node name="DoorOpenPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1480694947]
+
+[node name="LetterOpenPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1609260096]

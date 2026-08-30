@@ -1,0 +1,190 @@
+[gd_scene format=3 uid="uid://dw14g5sm5ioa3"]
+
+[ext_resource type="PackedScene" uid="uid://bsnebks0enlgn" path="res://character_body_2d.tscn" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://qlxmk8b83vc3" path="res://assets/stringstar fields/tileset.png" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://dpdu1udfoopw1" path="res://scripts/gamemanager.gd" id="1_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://c3xuwnk0ujdwf" path="res://assets/stringstar fields/background_0.png" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://drxi8flyqe5ll" path="res://platform.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://ck4ihsd2by5da" path="res://gems.tscn" id="5_7jktm"]
+[ext_resource type="PackedScene" uid="uid://0p0y1pv22s13" path="res://sceans/killzone.tscn" id="6_ryrav"]
+[ext_resource type="PackedScene" uid="uid://ddqaab15i1kok" path="res://sceans/bat.tscn" id="7_eow3j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_feb5d"]
+texture = ExtResource("1_e2o6t")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+0:5/size_in_atlas = Vector2i(4, 6)
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-34.364006, 18.876, 29.524002, 17.907997, 29.524002, 46.948006, -30.492004, 46.948006)
+5:4/size_in_atlas = Vector2i(5, 1)
+5:4/0 = 0
+5:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-41.021793, -8.173515, 42.56397, -7.5566463, 38.245884, -3.2385635, -39.47962, -2.6216927)
+7:5/size_in_atlas = Vector2i(3, 2)
+7:5/0 = 0
+10:0/size_in_atlas = Vector2i(8, 10)
+10:0/0 = 0
+4:7/size_in_atlas = Vector2i(6, 4)
+4:7/0 = 0
+4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-46.948006, 2.4199982, 45.979996, 1.4519958, 47.916, 28.556007, -51.788002, 29.523994)
+3:3/size_in_atlas = Vector2i(2, 2)
+3:3/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+2:3/0 = 0
+2:4/0 = 0
+1:4/0 = 0
+0:4/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
+texture = ExtResource("2_feb5d")
+0:0/size_in_atlas = Vector2i(18, 11)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_enfx4"]
+physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_feb5d")
+sources/1 = SubResource("TileSetAtlasSource_fc0e3")
+
+[sub_resource type="Animation" id="Animation_fc0e3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-373, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_7jktm"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-373, -5), Vector2(-319, -5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryrav"]
+_data = {
+&"RESET": SubResource("Animation_fc0e3"),
+&"move": SubResource("Animation_7jktm")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_enfx4"]
+distance = 7.0
+
+[node name="Game" type="Node2D" unique_id=1027352844]
+
+[node name="gamemanager" type="Node2D" parent="." unique_id=2090565527]
+unique_name_in_owner = true
+script = ExtResource("1_j5wjh")
+
+[node name="TileMap" type="TileMap" parent="." unique_id=34363446]
+position = Vector2(8, 1)
+tile_set = SubResource("TileSet_enfx4")
+format = 2
+layer_0/name = "backgroundL"
+layer_0/tile_data = PackedInt32Array(-262147, 1, 0, -327665, 1, 0, -262165, 1, 0, -262183, 1, 0, -262201, 1, 0, 458697, 1, 805306368, 458715, 1, 805306368, 458733, 1, 805306368, 458751, 1, 805306368, 393233, 1, 805306368, -1048598, 1, 0, -262219, 1, 0, -262237, 1, 0, 393251, 1, 536870912, 458679, 1, 536870912, 458661, 1, 536870912, -327647, 1, 268435456, -983080, 1, 536870912, -983062, 1, 536870912, -983044, 1, 536870912, -1048562, 1, 536870912, -1048544, 1, 536870912, -1048526, 1, 536870912, 393269, 1, 536870912, 1179611, 1, 268435456, 1179629, 1, 268435456, 1179646, 1, 268435456, 1114128, 1, 268435456, 1179593, 1, 268435456, 1179575, 1, 268435456, 1179557, 1, 268435456, -983098, 1, 536870912, -983116, 1, 536870912, -983134, 1, 536870912, -65522, 0, 5, -327629, 1, 0)
+layer_1/name = "Layer0"
+layer_1/tile_data = PackedInt32Array(-10, 0, 5, 65531, 262144, 7, -262142, 655360, 0, 1, 262144, 7, 3, 262144, 7, 9, 262144, 7, 65520, 327680, 4, -65568, 327680, 4, 131035, 327680, 4, 131028, 262144, 7, 65488, 458752, 5, 65486, 196608, 3, -131119, 131072, 2, -65583, 131072, 3, -47, 131072, 4, -131120, 65536, 2, -131121, 0, 2, -65585, 0, 3, -131127, 655360, 0, 131010, 262144, 7, 131016, 262144, 7, 65469, 0, 5, 65471, 196608, 3, -65522, 0, 5, 19, 262144, 7, 131000, 262144, 7, 130994, 262144, 7, -131157, 655360, 0, 65461, 458752, 5, 65467, 458752, 5, 65465, 458752, 5, 65463, 458752, 5, 65460, 196608, 3, 65459, 458752, 5, 65466, 196608, 3, 131023, 262144, 7, 131021, 262144, 7, 65489, 196608, 3, 65490, 196608, 3)
+
+[node name="player" parent="." unique_id=1771188264 instance=ExtResource("1_80nbo")]
+position = Vector2(-108, 15)
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=326075419]
+position = Vector2(0, -13)
+zoom = Vector2(4, 4)
+limit_bottom = 62
+position_smoothing_enabled = true
+
+[node name="platform" parent="." unique_id=833829374 instance=ExtResource("4_fc0e3")]
+position = Vector2(-771, -9)
+
+[node name="platform2" parent="." unique_id=105840696 instance=ExtResource("4_fc0e3")]
+position = Vector2(-373, -5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform2" unique_id=2009798980]
+libraries/ = SubResource("AnimationLibrary_ryrav")
+autoplay = &"move"
+
+[node name="gems" parent="." unique_id=1923356940 instance=ExtResource("5_7jktm")]
+position = Vector2(-240, -12)
+
+[node name="gems2" parent="." unique_id=626466464 instance=ExtResource("5_7jktm")]
+position = Vector2(-376, -21)
+
+[node name="gems3" parent="." unique_id=1761323159 instance=ExtResource("5_7jktm")]
+position = Vector2(-576, 5)
+
+[node name="gems4" parent="." unique_id=169346281 instance=ExtResource("5_7jktm")]
+position = Vector2(-497, -42)
+
+[node name="gems5" parent="." unique_id=1884746039 instance=ExtResource("5_7jktm")]
+position = Vector2(-693, 14)
+
+[node name="gems6" parent="." unique_id=752520834 instance=ExtResource("5_7jktm")]
+position = Vector2(-935, 7)
+
+[node name="gems7" parent="." unique_id=749462076 instance=ExtResource("5_7jktm")]
+position = Vector2(143, -10)
+
+[node name="killzone" parent="." unique_id=475359635 instance=ExtResource("6_ryrav")]
+position = Vector2(-628, 114)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=1566370083]
+position = Vector2(-1, -1)
+shape = SubResource("WorldBoundaryShape2D_enfx4")
+
+[node name="bat" parent="." unique_id=1844264272 instance=ExtResource("7_eow3j")]
+position = Vector2(-657, -7)
+
+[node name="bat2" parent="." unique_id=821775819 instance=ExtResource("7_eow3j")]
+position = Vector2(-1236, 11)
+
+[node name="bat3" parent="." unique_id=1075728483 instance=ExtResource("7_eow3j")]
+position = Vector2(-377, -37)
+
+[node name="bat4" parent="." unique_id=1600688506 instance=ExtResource("7_eow3j")]
+position = Vector2(309, -20)
+
+[node name="Label" type="Label" parent="bat4" unique_id=1594365014]
+offset_left = -385.0
+offset_top = -15.0
+offset_right = -352.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 8
+text = "Space to Jump"
+
+[node name="Label2" type="Label" parent="bat4" unique_id=887404182]
+offset_left = -536.0
+offset_top = 69.0
+offset_right = -425.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 8
+text = "falling hurts...."

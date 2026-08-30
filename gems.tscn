@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://ck4ihsd2by5da"]
+
+[ext_resource type="Texture2D" uid="uid://bny1phej7lqbh" path="res://assets/Pixel purple gem/Pixel purple gem.png" id="1_f7a65"]
+[ext_resource type="Script" uid="uid://cwyuy38vtrif2" path="res://scripts/gems.gd" id="1_ooqnb"]
+[ext_resource type="Script" uid="uid://bfujshyj311x3" path="res://scripts/collision_shape_2d.gd" id="3_vcjm0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a7gl"]
+atlas = ExtResource("1_f7a65")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooqnb"]
+atlas = ExtResource("1_f7a65")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcjm0"]
+atlas = ExtResource("1_f7a65")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_233ix"]
+atlas = ExtResource("1_f7a65")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukx2h"]
+atlas = ExtResource("1_f7a65")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjg8k"]
+atlas = ExtResource("1_f7a65")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oda7m"]
+atlas = ExtResource("1_f7a65")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_enfx4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a7gl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooqnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcjm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_233ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukx2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjg8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oda7m")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enfx4"]
+radius = 4.1231055
+
+[node name="gems" type="Area2D" unique_id=1923356940]
+script = ExtResource("1_ooqnb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=709012456]
+position = Vector2(0, 9.536743e-07)
+scale = Vector2(0.375, 0.40625)
+sprite_frames = SubResource("SpriteFrames_enfx4")
+autoplay = "default"
+frame_progress = 0.23182805
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2130200408]
+shape = SubResource("CircleShape2D_enfx4")
+script = ExtResource("3_vcjm0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
