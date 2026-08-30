@@ -1,2 +1,0 @@
-# Beyond The Void
-
